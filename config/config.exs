@@ -8,7 +8,8 @@
 use Mix.Config
 
 config :maki,
-  ecto_repos: [Maki.Repo]
+  ecto_repos: [Maki.Repo],
+  generators: [binary_id: true]
 
 # Configures the endpoint
 config :maki, MakiWeb.Endpoint,
