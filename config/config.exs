@@ -1,23 +1,29 @@
-# This file is responsible for configuring your application
-# and its dependencies with the aid of the Mix.Config module.
+# This file is responsible for configuring your umbrella
+# and **all applications** and their dependencies with the
+# help of Mix.Config.
 #
-# This configuration file is loaded before any dependency and
-# is restricted to this project.
-
-# General application configuration
+# Note that all applications in your umbrella share the
+# same configuration and dependencies, which is why they
+# all use the same configuration file. If you want different
+# configurations or dependencies per app, it is best to
+# move said applications out of the umbrella.
 use Mix.Config
 
+# Configure Mix tasks and generators
 config :maki,
+  ecto_repos: [Maki.Repo]
+
+config :maki_web,
   ecto_repos: [Maki.Repo],
-  generators: [binary_id: true]
+  generators: [context_app: :maki, binary_id: true]
 
 # Configures the endpoint
-config :maki, MakiWeb.Endpoint,
+config :maki_web, MakiWeb.Endpoint,
   url: [host: "localhost"],
-  secret_key_base: "Ll2L3c2c0CO35F7GIHTw/q4h4tWvMAWILw+YEhAs4i5ZHszaXUFzWvOjTKxTnqz4",
+  secret_key_base: "+pBR/agPYNpX8HEkn7FdgsO+GEf/bay6mX4bGbLPkEMnWCKyTHEbrou53M7V7otk",
   render_errors: [view: MakiWeb.ErrorView, accepts: ~w(html json), layout: false],
   pubsub_server: Maki.PubSub,
-  live_view: [signing_salt: "1gkWbyL8"]
+  live_view: [signing_salt: "JPM0G3mH"]
 
 # Configures Elixir's Logger
 config :logger, :console,

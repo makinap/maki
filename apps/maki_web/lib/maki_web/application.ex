@@ -1,4 +1,4 @@
-defmodule Maki.Application do
+defmodule MakiWeb.Application do
   # See https://hexdocs.pm/elixir/Application.html
   # for more information on OTP Applications
   @moduledoc false
@@ -7,21 +7,17 @@ defmodule Maki.Application do
 
   def start(_type, _args) do
     children = [
-      # Start the Ecto repository
-      Maki.Repo,
       # Start the Telemetry supervisor
       MakiWeb.Telemetry,
-      # Start the PubSub system
-      {Phoenix.PubSub, name: Maki.PubSub},
       # Start the Endpoint (http/https)
       MakiWeb.Endpoint
-      # Start a worker by calling: Maki.Worker.start_link(arg)
-      # {Maki.Worker, arg}
+      # Start a worker by calling: MakiWeb.Worker.start_link(arg)
+      # {MakiWeb.Worker, arg}
     ]
 
     # See https://hexdocs.pm/elixir/Supervisor.html
     # for other strategies and supported options
-    opts = [strategy: :one_for_one, name: Maki.Supervisor]
+    opts = [strategy: :one_for_one, name: MakiWeb.Supervisor]
     Supervisor.start_link(children, opts)
   end
 

@@ -1,13 +1,13 @@
 defmodule MakiWeb.Endpoint do
-  use Phoenix.Endpoint, otp_app: :maki
+  use Phoenix.Endpoint, otp_app: :maki_web
 
   # The session will be stored in the cookie and signed,
   # this means its contents can be read but not tampered with.
   # Set :encryption_salt if you would also like to encrypt it.
   @session_options [
     store: :cookie,
-    key: "_maki_key",
-    signing_salt: "sNzuqPqx"
+    key: "_maki_web_key",
+    signing_salt: "lfb1wcvp"
   ]
 
   socket "/socket", MakiWeb.UserSocket,
@@ -22,7 +22,7 @@ defmodule MakiWeb.Endpoint do
   # when deploying your static files in production.
   plug Plug.Static,
     at: "/",
-    from: :maki,
+    from: :maki_web,
     gzip: false,
     only: ~w(css fonts images js favicon.ico robots.txt)
 
@@ -32,7 +32,7 @@ defmodule MakiWeb.Endpoint do
     socket "/phoenix/live_reload/socket", Phoenix.LiveReloader.Socket
     plug Phoenix.LiveReloader
     plug Phoenix.CodeReloader
-    plug Phoenix.Ecto.CheckRepoStatus, otp_app: :maki
+    plug Phoenix.Ecto.CheckRepoStatus, otp_app: :maki_web
   end
 
   plug Phoenix.LiveDashboard.RequestLogger,
